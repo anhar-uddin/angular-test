@@ -16,5 +16,5 @@ I have developed applications with RXJS but was an older version. I now develop 
 
 I therefore had to work backwards which is why it took me a little longer than usual. I had performed this test while working so couldn’t dedicate as much time as I would have wanted too. 
 
-I would write more tests if I had more time. I haven’t written tests for RXJS in the past so it was a little bit of a challenge. I managed to complete tests for the reducers and actions. I struggled to get the effects test working, the test for the effects has been commented out (I’m more sure where I have gone wrong). I run out of time to write tests for each component. 
+I would write more tests if I had more time. I haven’t written tests for RXJS in the past so it was a little bit of a challenge. I managed to complete tests for the reducers and actions. I struggled to get the effects test working, the test for the effects has been commented out (I’m not sure where I have gone wrong, peer programming would've helped ). I run out of time to write tests for each component. 
 
