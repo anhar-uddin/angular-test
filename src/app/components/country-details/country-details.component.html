@@ -1,0 +1,17 @@
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Capital</th>
+    <th>Population</th>
+    <th>Currencies</th>
+    <th>Flag</th>
+  </tr>
+  <tr>
+    <td>{{country.name}}</td>
+    <td>{{country.capital}}</td>
+    <td>{{country.population}}</td>
+    <td>{{country.currencies[0].name}}</td>
+    <td> <img [src]="country.flag" alt=""> </td>
+
+  </tr>
+</table>
