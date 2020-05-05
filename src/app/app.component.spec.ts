@@ -10,6 +10,8 @@ import { appReducers } from './store/reducers/app.reducers';
 import { RegionEffects } from './store/effects/region.effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ChangeRegionSelection, GetCountries } from './store/actions/region.actions';
+import { regionReducers } from './store/reducers/region.reducer';
 
 describe('AppComponent', () => {
   let store: Store<RegionState>;
@@ -36,16 +38,33 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // it(`should have as title 'angular-test'`, () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.debugElement.componentInstance;
-  //   expect(app.title).toEqual('angular-test');
-  // });
+  describe('default', () => {
+    it('should return init state', () => {
+      const newState = regionReducers(undefined, new GetCountries(''));
+      expect(newState.regions.length).toEqual(2);
+    });
+  });
 
-  // it('should render title in a h1 tag', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-test!');
-  // });
+
+  describe('Region reducer', () => {
+    describe('default', () => {
+      it('should return "Asia" isSelcted:true', () => {
+        const newState = regionReducers(undefined, new ChangeRegionSelection('Asia'));
+        expect(newState.regions[1].isSelected).toEqual(true);
+      });
+    });
+  });
+
+
+  describe('Region actions', () => {
+    describe('ChangeRegionSelection', () => {
+      it('should dispatch Change Region Selection', () => {
+        const expectedAction = new ChangeRegionSelection('Asia');
+        const store = jasmine.createSpyObj<Store<RegionState>>('store', ['dispatch']);
+        store.dispatch(new ChangeRegionSelection('Asia'));
+        expect(store.dispatch).toHaveBeenCalledWith(expectedAction);
+      });
+    });
+  });
+
 });
